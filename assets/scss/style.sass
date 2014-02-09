@@ -1,0 +1,146 @@
+@import "normalize"
+@import "vars"
+
+*
+    box-sizing: border-box
+
+body
+    background: $background_color
+    color: $text_color
+    font-size: $font_size
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif
+    padding: 50px 0 0
+a
+    color: #000
+    text-decoration: none
+
+.no-list
+    padding: 0
+    margin: 0
+    list-style: none
+
+.cf:before,
+.cf:after
+    content: " "
+    display: table
+
+
+.cf:after
+    clear: both
+
+
+header
+    @extend .cf
+    background: $header_background
+    padding: 0 25px
+    width: 100%
+    box-shadow: 0 0 4px #444
+    position: fixed
+    top: 0
+
+    .logo
+        float: left
+        margin: 0 10px 0 0
+        padding: 15px 5px
+        font-weight: bold
+        text-transform: uppercase
+        &:hover
+            background: $background_color
+
+.search-form
+    margin: 10px auto
+    width: 40%
+
+    input[type=text]
+        border: 1px solid #e2e2e2
+        padding: 5px
+        width: 100%
+        border-radius: 5px
+
+
+nav
+    float: right
+    ul
+        @extend .no-list
+        > li
+            float: left
+            position: relative
+
+            a
+                padding: 1em .9em 1em
+                display: block
+
+            &:hover, &.active
+                background: $background_color
+                border-bottom: 2px solid #e2e2e2
+                margin-bottom: -2px
+
+        li
+            ul
+                position: absolute
+                min-width: 200%
+                right: 0
+                top: 100%
+                background: $header_background
+                white-space: nowrap
+                border: 1px solid #e2e2e2
+                border-top: 0
+                display: none
+
+                a
+                    padding: 7px 1em
+
+            &:hover > ul, &:focus > ul
+                display: block
+
+            &.dropdown:after
+                content: " "
+                border: 5px solid transparent
+                border-top-color: $text_color
+                position: absolute
+                right: 3px
+                top: 1.5em
+
+.results-list
+    @extend .no-list
+    width: 90%
+    margin: 10px auto
+    li
+        padding: 2%
+        margin: 5px 0
+        border: 1px solid #e2e2e2
+        background: #fff
+        cursor: pointer
+        box-shadow: 0 0 10px #e2e2e2
+        &:hover, &.active
+            background: darken($background_color, 1%)
+        .description
+            font-size: .8em
+
+
+footer
+    text-align: center
+    padding: 10px
+    border-top: 1px solid #e2e2e2
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
