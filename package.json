@@ -4,12 +4,11 @@
   "description": "Code snippets for front end developers.",
   "devDependencies": {
     "gulp": "~3.5.2",
-    "express": "~3.4.8",
-    "connect-livereload": "~0.3.2",
-    "tiny-lr": "0.0.5",
     "gulp-autoprefixer": "0.0.6",
     "gulp-ruby-sass": "~0.6.0",
-    "gulp-filter": "~0.2.1"
+    "gulp-filter": "~0.2.1",
+    "gulp-connect": "~0.3.1",
+    "gulp-load-plugins": "~0.3.0"
   },
   "author": "Mihai Ionut Vilcu",
   "license": "MIT"
