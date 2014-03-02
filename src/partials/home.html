@@ -1,0 +1,17 @@
+
+<div ng-controller="ListSnippetsCtrl">
+
+    <ul id="results" class="results-list">
+        <li class="result" ng-repeat="result in results | fuzzySearch:data.query">
+            <a tabindex="3" class="result-link" ng-click="" href="#/snippet/{{ result.id }}">
+                <span class="result-name" ng-bind-html="result.name | matchLetters:data.query"></span>
+                <span class='result-description' ng-bind-html="result.description | matchLetters:data.query"></span>
+            </a>
+        </li>
+
+        <li class="result" ng-hide="results | fuzzySearch:data.query">
+            <span class="result-link">No results for <strong>{{ data.query }}</strong> </a>
+        </li>
+    </ul>
+
+</div>

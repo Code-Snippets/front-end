@@ -1,15 +1,16 @@
 <!DOCTYPE html>
-<html class="no-js">
+<html class="no-js" ng-app="CodeSnippets">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Front-End Code Snippets</title>
     <meta name="description" content="Snippets for front end developers">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="app/assets/css/style.css">
 </head>
 <body>
-    <header>
+
+    <header ng-controller="HeaderCtrl">
         <a href="#" class="logo">Front-End Snippets</a>
 
         <nav>
@@ -25,20 +26,21 @@
             </ul>
         </nav>
 
-        <form action="#" class="search-form">
-            <input type="text" tabindex="1" id="q" placeholder="Search snippet">
+        <form action="#" class="search-form" id="search-form">
+            <input type="text" name="snippetq" tabindex="1" id="q" placeholder="Search snippet" ng-model="data.query">
         </form>
+
     </header>
 
-    <ul id="results" class="results-list"></ul>
-
-
+    <div class="container" ng-view>
+        <img class="loading" src="app/assets/img/loading.gif" alt="">
+    </div>
 
     <footer>
         <div class="copyright">
             Made with ♥ by <a href="https://github.com/ionutvmi">Mihai Ionut Vilcu</a>
         </div>
     </footer>
-    <script src="assets/js/main.js"></script>
+    <script src="app/assets/js/app.js"></script>
 </body>
 </html>

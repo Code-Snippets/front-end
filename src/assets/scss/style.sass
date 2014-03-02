@@ -1,8 +1,10 @@
 @import "normalize"
 @import "vars"
+@import "prism"
 
 *
     box-sizing: border-box
+
 
 body
     background: $background_color
@@ -101,21 +103,43 @@ nav
                 right: 3px
                 top: 1.5em
 
+.container
+    width: 90%
+    margin: 0 auto
+    min-height: 400px
+
+.loading
+    padding: 200px 0
+    margin: auto
+    width: auto
+    display: block
+
 .results-list
     @extend .no-list
-    width: 90%
-    margin: 10px auto
+    margin: 10px 0
     li
-        padding: 2%
         margin: 5px 0
         border: 1px solid #e2e2e2
         background: #fff
-        cursor: pointer
         box-shadow: 0 0 10px #e2e2e2
-        &:hover, &.active
-            background: darken($background_color, 1%)
-        .description
+        cursor: pointer
+
+        .result-description
+            display: block
             font-size: .8em
+        .result-name
+            display: block
+            font-size: 17px
+            padding: 2px 0
+            font-weight: bold
+        .result-link
+            display: block
+            padding: 2%
+            outline: 0
+            &:focus
+                box-shadow: 0 0 10px #444
+        .hl
+            color: #00f
 
 
 footer
