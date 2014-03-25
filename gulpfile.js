@@ -39,7 +39,6 @@ gulp.task('copy', function () {
 // Join js files
 gulp.task('concat', function () {
   return gulp.src([dev_js + '/**/*.js'])
-             .pipe($.debug())
              .pipe($.concat("app.js"))
              .pipe(gulp.dest(app_js))
              .pipe($.connect.reload());
@@ -71,7 +70,7 @@ gulp.task('default', ['sass', 'copy', 'concat', 'connect'], function() {
     });
 
     // watch for other files and copy them
-    gulp.watch([dev_dir + '/**/*.*', '!'+ dev_dir +'/**/*.{js,scss,sass}'], ['copy']);
+    gulp.watch([dev_dir + '/**/*.*', '!'+ dev_dir +'/**/*.{js,scss,sass,ttf,otf,woff}'], ['copy']);
 
 });
 

@@ -1,3 +1,20 @@
-<div ng-controller="SnippetDetailsCtrl">
-    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veniam, corporis!
+<div class="snippet-details" ng-controller="SnippetDetailsCtrl">
+
+    <div ng-show="snippet">
+
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <h3 class="panel-title">Code</h3>
+            </div>
+            <div class="panel-body">
+                <pre nag-prism class="line-numbers language-markup" source="snippet"></pre>
+            </div>
+        </div>
+
+    </div>
+
+    <img ng-hide="snippet || errorMsg" class="loading" src="app/assets/img/loading.gif" alt="">
+
+    <div ng-show="errorMsg" class="alert alert-danger">{{errorMsg}}</div>
+
 </div>

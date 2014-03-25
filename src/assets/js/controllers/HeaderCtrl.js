@@ -3,11 +3,10 @@
  */
 
 
-CodeSnippets.controller('HeaderCtrl', ['$scope', '$document', 'shareService', '$window',
-    function($scope, $document, shareService, $window) {
+CodeSnippets.controller('HeaderCtrl', ['$scope', '$document', 'shareService', '$window', '$http',
+    function($scope, $document, shareService, $window, $http) {
         // bind the query
         $scope.data = shareService;
-
 
         // get the search input
         var search_input = angular.element("#q");
@@ -35,6 +34,19 @@ CodeSnippets.controller('HeaderCtrl', ['$scope', '$document', 'shareService', '$
                 $window.location.hash = "#/home";
         });
 
+
+        // grab the snippets data
+
+        $http.get('snippets.json')
+             .success(function(data) {
+                $scope.data.results = data;
+             })
+             .error(function(data){
+                $scope.data.results = [{
+                    id: "404",
+                    name: "Error: " + data
+                }];
+             });
 
     }
 ]);

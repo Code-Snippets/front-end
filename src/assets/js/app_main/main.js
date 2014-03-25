@@ -1,10 +1,10 @@
-var CodeSnippets = angular.module('CodeSnippets', ['ngSanitize', 'hljs', 'ngRoute'])
+var CodeSnippets = angular.module('CodeSnippets', ['ngSanitize', 'ngRoute'])
     // routes and other configurations
     .config(['$routeProvider', function($routeProvider){
 
         $routeProvider
             .when('/home', {
-                templateUrl: 'app/partials/home.html',
+                templateUrl: 'app/partials/list_snippets.html',
                 controller : 'ListSnippetsCtrl'
             })
             .when('/snippet/:id', {

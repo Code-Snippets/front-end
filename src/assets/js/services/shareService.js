@@ -4,6 +4,7 @@
 
 CodeSnippets.factory('shareService', function() {
     return {
-        query: ''
+        query: '',
+        currentPage: ''
     }
 });

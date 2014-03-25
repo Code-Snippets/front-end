@@ -1,0 +1,43 @@
+// libs
+@import "bootstrap";
+@import "vars";
+@import "hljs";
+
+// content style
+
+body {
+  padding: 70px 0 0;
+}
+
+.search-form {
+  padding: 10px 0 5px;
+}
+
+.list-group-item:focus, .list-group-item:hover {
+  @extend .list-group-item.active;
+  outline: 0;
+}
+
+.hl {
+  font-weight: bold;
+}
+
+.loading {
+  width: 32px;
+  display: block;
+  margin: 20px auto;
+}
+.snippet-details {
+  .panel, .panel-body {
+    padding: 0;
+  }
+  .panel pre {
+    border: 0;
+    background: none;
+    padding-top: 0;
+    padding-bottom: 0;
+    word-wrap: normal;
+  }
+}
+
+
