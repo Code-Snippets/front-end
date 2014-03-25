@@ -3,8 +3,15 @@
     <div ng-show="snippet">
 
         <div class="panel panel-info">
-            <div class="panel-heading">
+            <div class="panel-heading clearfix">
                 <h3 class="panel-title">Code</h3>
+                <div class="panel-options">
+                    <a  href="#"
+                        clip-copy="getText()"
+                        clip-click="showLog('Data added to the clipboard !')"
+                        class="btn btn-sm btn-default">Copy</a>
+                    <a href="#" class="btn btn-sm btn-default">Open in sublime</a>
+                </div>
             </div>
             <div class="panel-body">
                 <pre nag-prism class="line-numbers language-markup" source="snippet"></pre>

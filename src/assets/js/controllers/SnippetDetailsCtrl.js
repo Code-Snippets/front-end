@@ -6,6 +6,13 @@ CodeSnippets.controller('SnippetDetailsCtrl', ['$scope', '$routeParams', '$http'
 
         $scope.data = shareService;
         $scope.data.currentPage = 'snippetDetails'
+        $scope.getText = function() {
+            return "testing the test";
+        };
+
+        $scope.showLog = function(a) {
+            console.log(a);
+        };
 
         $http.get('snippets/' + $routeParams.id)
              .success(function(data) {

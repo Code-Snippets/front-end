@@ -1,6 +1,9 @@
-var CodeSnippets = angular.module('CodeSnippets', ['ngSanitize', 'ngRoute'])
+var CodeSnippets = angular.module('CodeSnippets', ['ngSanitize', 'ngRoute', 'ngClipboard'])
     // routes and other configurations
-    .config(['$routeProvider', function($routeProvider){
+    .config(['$routeProvider', 'ngClipProvider', function($routeProvider, ngClipProvider){
+
+        ngClipProvider.setPath("assets/js/ZeroClipboard.swf");
+
 
         $routeProvider
             .when('/home', {

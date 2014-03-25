@@ -12,14 +12,38 @@ CodeSnippets.controller('HeaderCtrl', ['$scope', '$document', 'shareService', '$
         var search_input = angular.element("#q");
         search_input.focus();
 
-        // listen for the s key and focus on the search box
-        $document.on('keydown', function(event) {
+        // some key bidings
+        $document.on('keydown', function (event) {
             var tag = event.target.tagName.toLowerCase();
 
-            if(event.keyCode == 83 && tag != 'input' && tag != 'textarea'){
+            if((tag === 'input') || (tag === 'textarea'))
+                return;
+            // listen for the s key and focus on the search box
+            if(event.keyCode == 83){
                 event.preventDefault();
                 search_input.focus().select();
             }
+
+            var results = angular.element(".list-group-item");
+
+            if(!results.length) {
+                return;
+            }
+
+            // on arrow down move to the next element in the list
+            if(event.keyCode == 40){
+
+                var active_el = results.filter(":focus");
+                if(active_el.length) {
+                    console.log(active_el.next());
+                    active_el.next().focus();
+                } else {
+                    results[0].focus();
+                }
+
+            }
+
+
 
         });
         // cancel the submit event
