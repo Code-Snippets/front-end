@@ -10,6 +10,10 @@ var CodeSnippets = angular.module('CodeSnippets', ['ngSanitize', 'ngRoute', 'ngC
                 templateUrl: 'app/partials/list_snippets.html',
                 controller : 'ListSnippetsCtrl'
             })
+            .when('/docs', {
+                templateUrl: 'app/partials/documentation.html',
+                controller : 'DocsCtrl'
+            })
             .when('/snippet/:id', {
                     templateUrl : 'app/partials/snippet_details.html',
                 controller: 'SnippetDetailsCtrl'

@@ -35,7 +35,7 @@
                         <li ng-class="{active: data.currentPage == 'listSnippets'}">
                             <a href="#/home">Search</a>
                         </li>
-                        <li><a href="">Documentation</a></li>
+                        <li ng-class="{active: data.currentPage == 'docs'}"><a href="#/docs">Documentation</a></li>
                         <li><a href="">Menu</a></li>
                     </ul>
                 </div>
@@ -43,17 +43,19 @@
             </div>
         </div>
     </header>
+    <div class="wrapper">
+        <!-- Main content -->
+        <div class="container" ng-view>
+            <img class="loading" src="app/assets/img/loading.gif" alt="">
+        </div><!-- end Main content -->
 
-
-    <div class="container" ng-view>
-        <img class="loading" src="app/assets/img/loading.gif" alt="">
+        <footer>
+            <hr>
+            <div class="container text-center">
+                Made with ♥ by <a href="https://github.com/ionutvmi">Mihai Ionut Vilcu</a>
+            </div>
+        </footer>
     </div>
-
-    <footer>
-        <div class="container text-center">
-            Made with ♥ by <a href="https://github.com/ionutvmi">Mihai Ionut Vilcu</a>
-        </div>
-    </footer>
     <script src="app/assets/js/app.js"></script>
 </body>
 

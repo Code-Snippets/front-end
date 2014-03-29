@@ -1,26 +1,78 @@
-<div class="snippet-details" ng-controller="SnippetDetailsCtrl">
+<div class="snippet-details">
 
-    <div ng-show="snippet">
+    <div ng-hide="errorMsg">
 
-        <div class="panel panel-info">
+        <h3 class="text-center">{{snippet.name}}</h3>
+        <p class="text-center">{{snippet.description}}</p>
+
+        <!-- panel start -->
+        <div class="panel panel-info"
+             ng-repeat="panel in panels">
+
             <div class="panel-heading clearfix">
-                <h3 class="panel-title">Code</h3>
+
+                <h3 class="panel-title">{{panel.language | uppercase}}</h3>
+
                 <div class="panel-options">
-                    <a  href="#"
-                        clip-copy="getText()"
-                        clip-click="showLog('Data added to the clipboard !')"
-                        class="btn btn-sm btn-default">Copy</a>
-                    <a href="#" class="btn btn-sm btn-default">Open in sublime</a>
+
+                    <div class="btn-group">
+                        <!-- copy button -->
+                        <button
+                            type="button"
+                            clip-copy="panel.code"
+                            clip-click="showLog('Data added to the clipboard !');"
+                            class="btn btn-sm btn-default">Copy</button>
+                        <!-- copy selected button -->
+                        <button
+                            type="button"
+                            clip-copy="lastSelection"
+                            ng-show="isTextSelected"
+                            clip-click="showLog('Data added to the clipboard !');"
+                            class="btn btn-sm btn-default">Copy Selection</button>
+                        <!-- Dropdown -->
+                        <button type="button" class="btn btn-sm btn-default dropdown-toggle" data-toggle="dropdown">
+                            <span class="caret"></span>
+                            <span class="sr-only">Toggle Dropdown</span>
+                        </button>
+                        <!-- Options menu start -->
+                        <ul class="dropdown-menu" role="options">
+                            <li>
+                                <a href="#"
+                                clip-copy="lsCode = getMinText(panel.code, panel.language)"
+                                clip-click="lsCode ? showLog('Minified data added to the clipboard !') : ''">Copy minified</a>
+                            </li>
+                            <li>
+                                <a href="#">Open in sublime</a>
+                            </li>
+                            <li>
+                                <a href="#" ng-click="$parent.isTextSelected = true;" select-text="#code-{{$index}}">Select All</a>
+                            </li>
+                        </ul><!-- /options -->
+                    </div>
                 </div>
             </div>
             <div class="panel-body">
-                <pre nag-prism class="line-numbers language-markup" source="snippet"></pre>
+                <pre
+                    id="code-{{$index}}"
+                    nag-prism
+                    class="line-numbers language-{{panel.language}}"
+                    source="panel.code"></pre>
             </div>
-        </div>
+
+        </div><!-- /panel -->
 
     </div>
 
-    <img ng-hide="snippet || errorMsg" class="loading" src="app/assets/img/loading.gif" alt="">
+                <pre
+                    nag-prism
+                    class="line-numbers language-css">
+<code>body {
+color: red; {{snippet.name}}
+}</code>
+                    </pre>
+
+
+    <img ng-hide="panels || errorMsg" class="loading" src="app/assets/img/loading.gif" alt="">
 
     <div ng-show="errorMsg" class="alert alert-danger">{{errorMsg}}</div>
 
