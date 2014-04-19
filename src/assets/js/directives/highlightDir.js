@@ -2,14 +2,8 @@
  * # Prism
  *
  * This directive will apply Prism highlighing to the element.
- *
- * <pre nag-prism>
- *
- * @ngdirective nagPrism
- *
- * @nghtmlattribute {null} nag-prism
  */
-CodeSnippets.directive('nagPrism', [function($timeout) {
+CodeSnippets.directive('nagPrism', [function() {
     return {
         restrict: 'A',
         transclude: true,

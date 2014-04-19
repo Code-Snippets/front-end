@@ -5,8 +5,8 @@ CodeSnippets.controller('ListSnippetsCtrl', ['$scope', 'shareService',
     function ($scope, shareService) {
 
     // bind the query
-    $scope.data = shareService;
-    $scope.data.currentPage = 'listSnippets';
+    $scope.helpers = shareService;
+    $scope.helpers.currentPage = 'listSnippets';
 
 
 }]); // end controller ListSnippets

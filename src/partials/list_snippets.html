@@ -1,23 +1,23 @@
 <div>
 
-    <div class="list-group" ng-show="data.results">
+    <div class="list-group" ng-show="helpers.results">
         <a  tabindex="3"
-            ng-repeat="result in searchResults = (data.results | fuzzySearch:data.query)"
+            ng-repeat="result in searchResults = (helpers.results | fuzzySearch:helpers.query)"
             href="#/snippet/{{ result.id }}"
             class="list-group-item">
                 <h4 class="list-group-item-heading"
-                    ng-bind-html="result.name | matchLetters:data.query"></h4>
+                    ng-bind-html="result.name | matchLetters:helpers.query"></h4>
 
                 <p  class='list-group-item-text'
-                    ng-bind-html="result.description | matchLetters:data.query"></p>
+                    ng-bind-html="result.description | matchLetters:helpers.query"></p>
         </a>
 
         <a class="list-group-item" ng-hide="searchResults.length">
-            <span class="result-link">No results for <strong>{{ data.query }}</strong> </a>
+            <span class="result-link">No results for <strong>{{ helpers.query }}</strong> </a>
         </li>
     </div>
 
-    <img ng-hide="data.results" class="loading" src="app/assets/img/loading.gif" alt="">
+    <img ng-hide="helpers.results" class="loading" src="app/assets/img/loading.gif" alt="">
 
 
 </div>

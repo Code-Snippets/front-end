@@ -6,7 +6,7 @@
 CodeSnippets.controller('HeaderCtrl', ['$scope', '$document', 'shareService', '$window', '$http',
     function($scope, $document, shareService, $window, $http) {
         // bind the query
-        $scope.data = shareService;
+        $scope.helpers = shareService;
 
         // get the search input
         var search_input = jQuery("#q");
@@ -71,10 +71,10 @@ CodeSnippets.controller('HeaderCtrl', ['$scope', '$document', 'shareService', '$
 
         $http.get('snippets.json')
              .success(function(data) {
-                $scope.data.results = data;
+                $scope.helpers.results = data;
              })
              .error(function(data){
-                $scope.data.results = [{
+                $scope.helpers.results = [{
                     id: "404",
                     name: "Error: " + data
                 }];

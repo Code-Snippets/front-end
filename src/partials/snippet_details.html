@@ -3,10 +3,11 @@
     <div ng-hide="errorMsg">
 
         <h3 class="text-center">{{snippet.name}}</h3>
-        <p class="text-center">{{snippet.description}}</p>
+        <p class="text-center" ng-bind-html="snippet.description"></p>
 
         <!-- panel start -->
-        <div class="panel panel-info"
+        <div class="panel"
+             ng-class="{'panel-warning': panel.isTip, 'panel-info': !panel.isTip}"
              ng-repeat="panel in panels">
 
             <div class="panel-heading clearfix">
@@ -20,14 +21,14 @@
                         <button
                             type="button"
                             clip-copy="panel.code"
-                            clip-click="showLog('Data added to the clipboard !');"
+                            clip-click="helpers.showLog('Data added to the clipboard !');"
                             class="btn btn-sm btn-default">Copy</button>
                         <!-- copy selected button -->
                         <button
                             type="button"
-                            clip-copy="lastSelection"
-                            ng-show="isTextSelected"
-                            clip-click="showLog('Data added to the clipboard !');"
+                            clip-copy="helpers.lastSelection"
+                            ng-show="helpers.isTextSelected"
+                            clip-click="helpers.showLog('Data added to the clipboard !');"
                             class="btn btn-sm btn-default">Copy Selection</button>
                         <!-- Dropdown -->
                         <button type="button" class="btn btn-sm btn-default dropdown-toggle" data-toggle="dropdown">
@@ -38,39 +39,36 @@
                         <ul class="dropdown-menu" role="options">
                             <li>
                                 <a href="#"
-                                clip-copy="lsCode = getMinText(panel.code, panel.language)"
-                                clip-click="lsCode ? showLog('Minified data added to the clipboard !') : ''">Copy minified</a>
+                                clip-copy="lsCode = helpers.getMinText(panel.code, panel.language)"
+                                clip-click="lsCode ? helpers.showLog('Minified data added to the clipboard !') : ''">Copy minified</a>
                             </li>
                             <li>
                                 <a href="#">Open in sublime</a>
                             </li>
                             <li>
-                                <a href="#" ng-click="$parent.isTextSelected = true;" select-text="#code-{{$index}}">Select All</a>
+                                <a href="#" ng-click="helpers.isTextSelected = true;" select-text="#code-{{$index}}">Select All</a>
                             </li>
                         </ul><!-- /options -->
                     </div>
                 </div>
             </div>
             <div class="panel-body">
+
                 <pre
                     id="code-{{$index}}"
                     nag-prism
+                    ng-if="!panel.isTip"
                     class="line-numbers language-{{panel.language}}"
                     source="panel.code"></pre>
+                <div
+                    class="tip-info"
+                    ng-if="panel.isTip"
+                    marked="panel.code"></div>
             </div>
 
         </div><!-- /panel -->
 
     </div>
-
-                <pre
-                    nag-prism
-                    class="line-numbers language-css">
-<code>body {
-color: red; {{snippet.name}}
-}</code>
-                    </pre>
-
 
     <img ng-hide="panels || errorMsg" class="loading" src="app/assets/img/loading.gif" alt="">
 

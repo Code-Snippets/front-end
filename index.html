@@ -25,18 +25,27 @@
                     </button>
                     <a class="navbar-brand" href="#">FRONT-END SNIPPETS</a>
                 </div>
-                <div class="col-xs-12 col-sm-4 col-md-6 col-lg-6 pull-left">
+                <div class="col-xs-12 col-sm-4 col-md-5 col-lg-6 pull-left">
                     <form action="#" class="search-form" id="search-form">
-                        <input type="text" name="csq" tabindex="1" id="q" placeholder="Search snippet" ng-model="data.query" class="form-control">
+                        <input type="text" name="csq" tabindex="1" id="q" placeholder="Search snippet" ng-model="helpers.query" class="form-control">
                     </form>
                 </div>
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">
-                        <li ng-class="{active: data.currentPage == 'listSnippets'}">
+                        <li ng-class="{active: helpers.currentPage == 'listSnippets'}">
                             <a href="#/home">Search</a>
                         </li>
-                        <li ng-class="{active: data.currentPage == 'docs'}"><a href="#/docs">Documentation</a></li>
-                        <li><a href="">Menu</a></li>
+                        <li ng-class="{active: helpers.currentPage == 'docs'}"><a href="#/docs">Documentation</a></li>
+                        <li class="dropdown">
+                            <a  class="dropdown-toggle"
+                                data-toggle="dropdown"
+                                href="">Tools <b class="caret"></b></a>
+
+                            <ul class="dropdown-menu">
+                                <li><a href="#/make-snippet">Make snippet</a></li>
+                                <!-- <li class="divider"></li> -->
+                            </ul>
+                        </li>
                     </ul>
                 </div>
                 <!--/.nav-collapse -->

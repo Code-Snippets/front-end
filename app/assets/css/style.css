@@ -6579,6 +6579,10 @@ body {
   padding: 51px 0 0;
 }
 
+footer {
+  padding: 20px 0;
+}
+
 .wrapper {
   height: 100%;
   overflow: auto;
@@ -6630,6 +6634,28 @@ body {
 .dropdown-menu {
   right: 0;
   left: auto;
+}
+
+.snippet-details .panel .tip-info {
+  padding: 15px;
+}
+.snippet-details .panel .tip-info > pre {
+  margin: 0 0 10px 0;
+  background-color: #F8F8F8;
+  border: 1px solid #DDD;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px;
+}
+
+a {
+  cursor: pointer;
+}
+
+.panel-remove {
+  color: #000;
 }
 
 @media screen and (max-width: 767px) {

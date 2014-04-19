@@ -5,8 +5,8 @@ CodeSnippets.controller('DocsCtrl', ['$scope', 'shareService',
     function ($scope, shareService) {
 
     // bind the query
-    $scope.data = shareService;
-    $scope.data.currentPage = 'docs';
+    $scope.helpers = shareService;
+    $scope.helpers.currentPage = 'docs';
 
 
-}]); // end controller ListSnippets
+}]); // end controller Docs
