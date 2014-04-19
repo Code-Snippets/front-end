@@ -6,6 +6,8 @@
 
 // dependencies
 var gulp = require('gulp');
+var fs = require( 'fs' );
+var libxmljs = require("libxmljs");
 
 // Load plugins
 var $ = require('gulp-load-plugins')();
@@ -44,6 +46,40 @@ gulp.task('concat', function () {
              .pipe($.connect.reload());
 });
 
+
+
+// generate the snippets.json file
+gulp.task('logSnippets', function() {
+
+  var files = getFiles('snippets');
+  var snippets = [];
+
+  files.forEach(function(val, index) {
+
+    // read the content of the file and parse the xml
+    var xml = fs.readFileSync(__dirname + "/" + val, { encoding: 'utf8'});
+
+    var xmlDoc = libxmljs.parseXmlString(xml);
+    var description = xmlDoc.get("//description").text();
+    var name = xmlDoc.get("//name").text();
+
+    // push the object to the main array
+    snippets.push({
+      id: val,
+      name: name,
+      description: description
+    });
+
+
+  }); // foreach
+
+  // convert the object into json, and add it to out snippets file
+  fs.writeFileSync('snippets.json', JSON.stringify(snippets));
+});
+
+
+
+
 // Connect to the server
 gulp.task('connect', $.connect.server({
     root: __dirname,
@@ -76,4 +112,31 @@ gulp.task('default', ['sass', 'copy', 'concat', 'connect'], function() {
 
 
 // the build task
-gulp.task('build', ['sass', 'copy', 'concat']);
+gulp.task('build', ['sass', 'copy', 'concat', 'logSnippets']);
+
+
+// helper functions
+function getFiles(dir){
+    if(!fs.existsSync(dir)) {
+        console.log("\n\n(!) `" + dir + "` doesn't exists ! \n\n");
+        return [];
+    }
+
+    var files = fs.readdirSync(dir);
+    var result = [];
+    for(var i in files){
+
+        if (!files.hasOwnProperty(i)) {continue;}
+
+        var name = dir+'/'+files[i];
+
+        if (fs.statSync(name).isDirectory()){
+            result = result.concat(getFiles(name));
+        } else {
+            result.push(name);
+        }
+
+    }
+    return result;
+}
+
