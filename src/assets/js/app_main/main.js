@@ -27,8 +27,8 @@ var CodeSnippets = angular.module('CodeSnippets', ['ngSanitize', 'ngRoute', 'ngC
                 templateUrl: 'app/partials/make_snippet.html',
                 controller : 'MakeSnippetCtrl'
             })
-            .when('/snippet/:id', {
-                    templateUrl : 'app/partials/snippet_details.html',
+            .when('/snippets/:id*', {
+                templateUrl : 'app/partials/snippet_details.html',
                 controller: 'SnippetDetailsCtrl'
             })
             .otherwise({

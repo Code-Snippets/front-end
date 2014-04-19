@@ -3,7 +3,7 @@
     <div class="list-group" ng-show="helpers.results">
         <a  tabindex="3"
             ng-repeat="result in searchResults = (helpers.results | fuzzySearch:helpers.query)"
-            href="#/snippet/{{ result.id }}"
+            href="#/{{ result.id }}"
             class="list-group-item">
                 <h4 class="list-group-item-heading"
                     ng-bind-html="result.name | matchLetters:helpers.query"></h4>

@@ -11,6 +11,7 @@ CodeSnippets.controller('SnippetDetailsCtrl',
         $scope.helpers.listenForSelection();
 
         // grab and interpret the snippet
+        console.log($routeParams.id);
         $http.get('snippets/' + $routeParams.id)
              .success(function(data) {
                 var code = jQuery(jQuery.parseXML(data));
@@ -64,7 +65,7 @@ CodeSnippets.controller('SnippetDetailsCtrl',
 
              }) // success
              .error(function(data){
-                $scope.errorMsg = data;
+                $scope.errorMsg = "This snippet doesn't exists !";
              });
 
 
