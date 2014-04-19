@@ -1,0 +1,52 @@
+<snippet>
+  <!-- Required a name for the snippet -->
+  <name>Clearfix</name>
+  <!-- Optional a desctiotion for the snippet -->
+  <description>The clearfix hack is a popular way to contain floats without resorting to using presentational <b>markup</b>.</description>
+  <!-- Required the content of the snippet
+      @attr language: the language for the highlight,
+            supported: markup(html,xml, this is the default value), css, scss, clike, javascript, java, php, bash, c, cpp, python, sql, groovy, http
+  -->
+  <content language="css"><![CDATA[.cf:after,
+.cf:before {
+    content: '';
+    display: table;
+}
+.cf:after {
+    clear: both;
+}
+.cf {
+    zoom: 1;
+}
+]]></content>
+<content type="tip"><![CDATA[
+#headings
+```javascript
+  var a = 4;
+  document.write(a);
+  function test() {
+    return 4;
+  }
+  test();
+```
+I can just write instructions `here`
+
+  ]]></content>
+
+  <!-- if url is defined it will fetch the content from there and the current content will stand as fallback -->
+  <content language="javascript" url="https://rawgit.com/scottjehl/Respond/master/dest/respond.min.js"><![CDATA[var a = 4;
+function red(test) {
+  return test;
+}
+]]></content>
+  <content type="tip"><![CDATA[
+    <b onclick="alert('hey')">
+      var a = 4;
+      document.write(a);
+    </b>
+  ]]></content>
+
+
+</snippet>
+
+

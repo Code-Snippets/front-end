@@ -1,0 +1,17 @@
+{
+  "name": "CodeSnippets",
+  "version": "0.0.1",
+  "description": "Code snippets for front end developers.",
+  "devDependencies": {
+    "gulp": "~3.5.2",
+    "gulp-autoprefixer": "0.0.6",
+    "gulp-ruby-sass": "~0.6.0",
+    "gulp-filter": "~0.2.1",
+    "gulp-connect": "~0.3.1",
+    "gulp-load-plugins": "~0.3.0",
+    "gulp-concat": "~2.1.7",
+    "gulp-debug": "~0.2.0"
+  },
+  "author": "Mihai Ionut Vilcu",
+  "license": "MIT"
+}

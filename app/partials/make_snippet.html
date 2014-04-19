@@ -1,0 +1,150 @@
+<h1>Make Snippet</h1>
+<hr>
+<form name="myForm">
+    <!-- row start -->
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label class="control-label">Name:</label>
+                <input type="text" name="name" ng-model="snippet.name" placeholder="Name" class="form-control">
+            </div>
+        </div>
+    </div><!-- /row -->
+
+    <!-- row start -->
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label class="control-label">Description:</label>
+                <textarea name="description" ng-model="snippet.description" placeholder="Description" class="form-control"></textarea>
+            </div>
+        </div>
+    </div><!-- /row -->
+
+    <div ng-repeat="panel in panels">
+        <hr>
+
+        <!-- row start -->
+        <div class="row">
+            <div class="col-sm-6">
+                <h3 class="clearfix">
+                    <span class="pull-left">Panel {{$index+1}}</span>
+                    <a class="pull-right panel-remove"
+                       ng-hide="panels.length < 2"
+                       ng-click="removePanel($index)">
+                       <i class="glyphicon glyphicon-remove"></i>
+                    </a>
+                </h3>
+                <div class="form-group">
+                    <label>Type</label>
+                    <select ng-model="panel.type" class="form-control">
+                        <option value="code">Code Panel</option>
+                        <option value="tip">ProTip Panel</option>
+                    </select>
+                </div>
+            </div><!-- /col -->
+        </div><!-- /row -->
+
+        <!-- row start -->
+        <div class="row" ng-if="panel.type != 'tip'">
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label>Language</label>
+                    <select ng-model="panel.language" class="form-control">
+                        <option value="markup">Markup(html,xml)</option>
+                        <option value="css">Css</option>
+                        <option value="scss">Scss</option>
+                        <option value="clike">Clike</option>
+                        <option value="javascript">Javascript</option>
+                        <option value="java">Java</option>
+                        <option value="php">Php</option>
+                        <option value="bash">Bash</option>
+                        <option value="c">C</option>
+                        <option value="cpp">Cpp</option>
+                        <option value="python">Python</option>
+                        <option value="sql">Sql</option>
+                        <option value="groovy">Groovy</option>
+                        <option value="http">Http</option>
+                    </select>
+                </div>
+            </div><!-- /col -->
+        </div><!-- /row -->
+
+
+        <!-- row start -->
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label>Url</label>
+                    <input class="form-control" type="text" ng-model="panel.url" placeholder="Url (optional)">
+                </div>
+            </div><!-- /col -->
+        </div><!-- /row -->
+
+        <!-- row start -->
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label>Code</label>
+                    <textarea
+                        class="form-control"
+                        enable-tab
+                        rows="10"
+                        ng-model="panel.code"
+                        placeholder="Panel Code"></textarea>
+                </div>
+            </div><!-- /col -->
+            <!-- col -->
+            <div class="col-sm-6" ng-if="panel.type == 'tip'">
+                <label class="control-label">Preview</label>
+                <div marked="panel.code"></div>
+            </div>
+        </div><!-- /row -->
+
+        <!-- row start -->
+        <div class="row" ng-if="$last">
+            <div class="col-sm-6">
+                <button class="btn btn-success pull-right" ng-click="addPanel()">
+                    <i class="glyphicon glyphicon-plus"></i>
+                    <span>Add Panel</span>
+                </button>
+            </div><!-- /col -->
+        </div><!-- /row -->
+
+
+    </div><!-- ngRepeat -->
+
+
+    <hr>
+    <div class="snippet-details">
+        <div class="panel panel-info">
+            <div class="panel-heading clearfix">
+
+                <h3 class="panel-title">SNIPPET</h3>
+
+                <div class="panel-options">
+
+                    <div class="btn-group">
+                        <!-- copy button -->
+                        <button
+                            type="button"
+                            clip-copy="snippetCode"
+                            clip-click="showLog('Data added to the clipboard !');"
+                            class="btn btn-sm btn-default">Copy</button>
+                    </div>
+                </div>
+            </div>
+            <div class="panel-body">
+                <pre nag-prism
+                     class="line-numbers language-markup"
+                     source="snippetCode"></pre>
+            </div>
+        </div>
+    </div>
+
+
+
+
+</form>
+
+
