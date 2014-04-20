@@ -1892,9 +1892,21 @@ var CodeSnippets = angular.module('CodeSnippets', ['ngSanitize', 'ngRoute', 'ngC
 CodeSnippets.controller('DocsCtrl', ['$scope', 'shareService',
     function ($scope, shareService) {
 
-    // bind the query
+    // bind the helpers
     $scope.helpers = shareService;
-    $scope.helpers.currentPage = 'docs';
+    $scope.helpers.currentPage = 'Docs';
+
+
+}]); // end controller Docs
+
+/**
+ * Footer controller
+ */
+CodeSnippets.controller('FooterCtrl', ['$scope', 'shareService',
+    function ($scope, shareService) {
+
+    // bind the helpers
+    $scope.helpers = shareService;
 
 
 }]); // end controller Docs
@@ -1992,7 +2004,7 @@ CodeSnippets.controller('ListSnippetsCtrl', ['$scope', 'shareService',
 
     // bind the query
     $scope.helpers = shareService;
-    $scope.helpers.currentPage = 'listSnippets';
+    $scope.helpers.currentPage = 'ListSnippets';
 
 
 }]); // end controller ListSnippets
@@ -2067,7 +2079,7 @@ CodeSnippets.controller('SnippetDetailsCtrl',
     function($scope, $routeParams, $http, shareService) {
 
         $scope.helpers = shareService;
-        $scope.helpers.currentPage = 'snippetDetails'
+        $scope.helpers.currentPage = 'SnippetDetails'
 
         $scope.helpers.listenForSelection();
 
@@ -2247,6 +2259,7 @@ CodeSnippets.filter('matchLetters', function() {
 
 CodeSnippets.factory('shareService', ['$rootScope', function($rootScope) {
     return {
+        repoUrl: 'https://github.com/Code-Snippets/front-end/tree/master/',
         query: '', // store the search query
         currentPage: '', // store the current page
         // show the log message
@@ -2317,6 +2330,7 @@ CodeSnippets.factory('shareService', ['$rootScope', function($rootScope) {
             // this will be ok for css and html
             return YAHOO.compressor.cssmin(txt);
         },
+        // sends the request to open the snippet in sublime
         openInSublime: function(data) {
             var t = this;
             $.ajax({
@@ -2333,8 +2347,38 @@ CodeSnippets.factory('shareService', ['$rootScope', function($rootScope) {
                     t.showLog('You need to have Sublime Text 3 open and have the <a href="https://github.com/Code-Snippets/CodeSnippetsHelper">sublime plugin</a> installed !', 'warning');
                 }
             });
-        }
+        },
+        getPageEditLink: function getPageEditLink() {
 
+            if(this.currentPage == 'ListSnippets') {
+
+                return this.repoUrl + 'src/partials/list_snippets.html';
+
+            } else if(this.currentPage == 'Docs') {
+
+                return this.repoUrl + 'src/partials/documentation.html';
+
+            } else if(this.currentPage == 'MakeSnippet') {
+
+                return this.repoUrl + 'src/partials/make_snippet.html';
+
+            } else if(this.currentPage == 'SnippetDetails') {
+
+                return this.repoUrl + window.location.hash.substr(1);
+            }
+
+        },
+        getPageControllerLink: function getPageControllerLink() {
+
+            return this.repoUrl + 'src/assets/js/controllers/'+ this.currentPage +'Ctrl.js';
+
+        },
+        goToEditPage: function goToEditPage() {
+            window.location.href = this.getPageEditLink();
+        },
+        goToEditController: function goToEditPage() {
+            window.location.href = this.getPageControllerLink();
+        }
 
     } // return
 }]);

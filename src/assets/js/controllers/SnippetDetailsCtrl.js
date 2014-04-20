@@ -6,7 +6,7 @@ CodeSnippets.controller('SnippetDetailsCtrl',
     function($scope, $routeParams, $http, shareService) {
 
         $scope.helpers = shareService;
-        $scope.helpers.currentPage = 'snippetDetails'
+        $scope.helpers.currentPage = 'SnippetDetails'
 
         $scope.helpers.listenForSelection();
 
