@@ -58,9 +58,19 @@
             <img class="loading" src="app/assets/img/loading.gif" alt="">
         </div><!-- end Main content -->
 
-        <footer>
+        <footer ng-controller="FooterCtrl">
             <hr>
             <div class="container text-center">
+                <span class="dropdown dropup">
+                    <a class="dropdown-toggle"
+                       data-toggle="dropdown">Edit this page <span class="caret"></span></a>
+
+                    <ul class="dropdown-menu">
+                        <li><a ng-click="helpers.goToEditPage()">Edit Template</a></li>
+                        <li><a ng-click="helpers.goToEditController()">Edit Controller</a></li>
+                    </ul>
+                </span>
+                <span>|</span>
                 Made with ♥ by <a href="https://github.com/ionutvmi">Mihai Ionut Vilcu</a>
             </div>
         </footer>
