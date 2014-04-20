@@ -11,7 +11,6 @@ CodeSnippets.controller('SnippetDetailsCtrl',
         $scope.helpers.listenForSelection();
 
         // grab and interpret the snippet
-        console.log($routeParams.id);
         $http.get('snippets/' + $routeParams.id)
              .success(function(data) {
                 var code = jQuery(jQuery.parseXML(data));
@@ -19,7 +18,7 @@ CodeSnippets.controller('SnippetDetailsCtrl',
                 $scope.snippet = {};
                 // some general data
                 $scope.snippet.name = code.find('name')[0].innerHTML;
-                $scope.snippet.description = code.find('description')[0].innerHTML;
+                $scope.snippet.description = code.find('description').text();
 
                 // build the code panels
                 $scope.panels = {};

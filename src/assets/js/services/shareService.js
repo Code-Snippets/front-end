@@ -73,6 +73,23 @@ CodeSnippets.factory('shareService', ['$rootScope', function($rootScope) {
             }
             // this will be ok for css and html
             return YAHOO.compressor.cssmin(txt);
+        },
+        openInSublime: function(data) {
+            var t = this;
+            $.ajax({
+                type: 'POST',
+                url: 'http://localhost:7878',
+                data: JSON.stringify({
+                    txt: data
+                }),
+                dataType: 'text',
+                success: function() {
+                    t.showLog('The snippet was successfully sent !');
+                },
+                error: function() {
+                    t.showLog('You need to have Sublime Text 3 open and have the <a href="https://github.com/Code-Snippets/CodeSnippetsHelper">sublime plugin</a> installed !', 'warning');
+                }
+            });
         }
 
 

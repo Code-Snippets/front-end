@@ -43,7 +43,7 @@
                                 clip-click="lsCode ? helpers.showLog('Minified data added to the clipboard !') : ''">Copy minified</a>
                             </li>
                             <li>
-                                <a href="#">Open in sublime</a>
+                                <a ng-click="helpers.openInSublime(panel.code)">Open in sublime</a>
                             </li>
                             <li>
                                 <a href="#" ng-click="helpers.isTextSelected = true;" select-text="#code-{{$index}}">Select All</a>

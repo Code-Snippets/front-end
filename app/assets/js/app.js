@@ -2072,7 +2072,6 @@ CodeSnippets.controller('SnippetDetailsCtrl',
         $scope.helpers.listenForSelection();
 
         // grab and interpret the snippet
-        console.log($routeParams.id);
         $http.get('snippets/' + $routeParams.id)
              .success(function(data) {
                 var code = jQuery(jQuery.parseXML(data));
@@ -2080,7 +2079,7 @@ CodeSnippets.controller('SnippetDetailsCtrl',
                 $scope.snippet = {};
                 // some general data
                 $scope.snippet.name = code.find('name')[0].innerHTML;
-                $scope.snippet.description = code.find('description')[0].innerHTML;
+                $scope.snippet.description = code.find('description').text();
 
                 // build the code panels
                 $scope.panels = {};
@@ -2317,6 +2316,23 @@ CodeSnippets.factory('shareService', ['$rootScope', function($rootScope) {
             }
             // this will be ok for css and html
             return YAHOO.compressor.cssmin(txt);
+        },
+        openInSublime: function(data) {
+            var t = this;
+            $.ajax({
+                type: 'POST',
+                url: 'http://localhost:7878',
+                data: JSON.stringify({
+                    txt: data
+                }),
+                dataType: 'text',
+                success: function() {
+                    t.showLog('The snippet was successfully sent !');
+                },
+                error: function() {
+                    t.showLog('You need to have Sublime Text 3 open and have the <a href="https://github.com/Code-Snippets/CodeSnippetsHelper">sublime plugin</a> installed !', 'warning');
+                }
+            });
         }
 
 
