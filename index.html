@@ -67,6 +67,7 @@
 
                     <ul class="dropdown-menu">
                         <li><a ng-click="helpers.goToEditPage()">Edit Template</a></li>
+                        <li ng-if="helpers.currentPage == 'SnippetDetails'"><a ng-click="helpers.goToSnippet()">Edit Snippet</a></li>
                         <li><a ng-click="helpers.goToEditController()">Edit Controller</a></li>
                     </ul>
                 </span>
