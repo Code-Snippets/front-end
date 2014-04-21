@@ -109,9 +109,12 @@ CodeSnippets.factory('shareService', ['$rootScope', function($rootScope) {
 
             } else if(this.currentPage == 'SnippetDetails') {
 
-                return this.repoUrl + window.location.hash.substr(1);
+                return this.repoUrl + 'src/partials/snippet_details.html';
             }
 
+        },
+        getSnippetLink: function getSnippetLink() {
+            return this.repoUrl + window.location.hash.substr(1);
         },
         getPageControllerLink: function getPageControllerLink() {
 
@@ -123,6 +126,9 @@ CodeSnippets.factory('shareService', ['$rootScope', function($rootScope) {
         },
         goToEditController: function goToEditPage() {
             window.location.href = this.getPageControllerLink();
+        },
+        goToSnippet: function goToSnippet() {
+            window.location.href = this.getSnippetLink();
         }
 
     } // return
