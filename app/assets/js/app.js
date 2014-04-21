@@ -2226,6 +2226,33 @@ CodeSnippets.directive('selectText', [function() {
 
 }]);
 
+/**
+ * perfoms a fuzzy search in input based on q
+ */
+
+CodeSnippets.filter('fuzzySearch', function() {
+    return function(input, q) {
+        if(q == "" || q == undefined)
+            return input;
+
+
+        var fuzzy = new Fuse(input, {keys: ['name', 'description']});
+        return fuzzy.search(q);
+    }
+})
+
+/**
+ * Highlights the matching letters in input from q
+ */
+CodeSnippets.filter('matchLetters', function() {
+    return function(input, q) {
+        if(q == "" || q == undefined)
+            return input;
+        var re = new RegExp("([" + q + "]+)", "gi");
+        return input.replace(re, "<span class='hl'>$1</span>");
+    }
+});
+
  /**
  * We use it to share data between controllers
  */
@@ -2361,30 +2388,3 @@ CodeSnippets.factory('shareService', ['$rootScope', function($rootScope) {
 
     } // return
 }]);
-
-/**
- * perfoms a fuzzy search in input based on q
- */
-
-CodeSnippets.filter('fuzzySearch', function() {
-    return function(input, q) {
-        if(q == "" || q == undefined)
-            return input;
-
-
-        var fuzzy = new Fuse(input, {keys: ['name', 'description']});
-        return fuzzy.search(q);
-    }
-})
-
-/**
- * Highlights the matching letters in input from q
- */
-CodeSnippets.filter('matchLetters', function() {
-    return function(input, q) {
-        if(q == "" || q == undefined)
-            return input;
-        var re = new RegExp("([" + q + "]+)", "gi");
-        return input.replace(re, "<span class='hl'>$1</span>");
-    }
-});
