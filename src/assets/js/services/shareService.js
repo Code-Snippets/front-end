@@ -4,7 +4,7 @@
 
 CodeSnippets.factory('shareService', ['$rootScope', function($rootScope) {
     return {
-        repoUrl: 'https://github.com/Code-Snippets/front-end/tree/master/',
+        repoUrl: 'https://github.com/Code-Snippets/front-end/tree/gh-pages/',
         query: '', // store the search query
         currentPage: '', // store the current page
         // show the log message
