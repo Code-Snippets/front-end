@@ -31,7 +31,7 @@ CodeSnippets.controller('MakeSnippetCtrl', ['$scope', 'shareService',
         }
 
         if($scope.snippet.description) {
-            $scope.snippetCode += "\n<description>"+ $scope.snippet.description +"</description>\n";
+            $scope.snippetCode += "\n<description><![CDATA["+ $scope.snippet.description +"]]></description>\n";
         }
 
 

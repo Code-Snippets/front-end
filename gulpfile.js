@@ -92,7 +92,7 @@ gulp.task('connect', $.connect.server({
 
 
 // the development task
-gulp.task('default', ['sass', 'copy', 'concat', 'connect'], function() {
+gulp.task('default', ['sass', 'copy', 'concat', 'logSnippets', 'connect'], function() {
 
     // watch for sass files
     gulp.watch(dev_sass + '/**/*.{scss,sass}', ['sass']);
