@@ -6658,6 +6658,70 @@ a {
   color: #000;
 }
 
+/* ==========================================================================
+    Markdown style helper
+   ========================================================================== */
+.panel-warning .panel-body h1, .panel-warning .panel-body h2, .panel-warning .panel-body h3, .panel-warning .panel-body h4, .panel-warning .panel-body h5, .panel-warning .panel-body h6 {
+  margin: 1em 0 15px;
+  padding: 0;
+  font-weight: bold;
+  line-height: 1.7;
+  cursor: text;
+  position: relative;
+}
+
+.panel-warning .panel-body h1 .octicon-link, .panel-warning .panel-body h2 .octicon-link, .panel-warning .panel-body h3 .octicon-link, .panel-warning .panel-body h4 .octicon-link, .panel-warning .panel-body h5 .octicon-link, .panel-warning .panel-body h6 .octicon-link {
+  display: none;
+  color: black;
+}
+
+.panel-warning .panel-body h1:hover a.anchor, .panel-warning .panel-body h2:hover a.anchor, .panel-warning .panel-body h3:hover a.anchor, .panel-warning .panel-body h4:hover a.anchor, .panel-warning .panel-body h5:hover a.anchor, .panel-warning .panel-body h6:hover a.anchor {
+  text-decoration: none;
+  line-height: 1;
+  padding-left: 0;
+  margin-left: -22px;
+  top: 15%;
+}
+
+.panel-warning .panel-body h1:hover a.anchor .octicon-link, .panel-warning .panel-body h2:hover a.anchor .octicon-link, .panel-warning .panel-body h3:hover a.anchor .octicon-link, .panel-warning .panel-body h4:hover a.anchor .octicon-link, .panel-warning .panel-body h5:hover a.anchor .octicon-link, .panel-warning .panel-body h6:hover a.anchor .octicon-link {
+  display: inline-block;
+}
+
+.panel-warning .panel-body h1 tt, .panel-warning .panel-body h1 code, .panel-warning .panel-body h2 tt, .panel-warning .panel-body h2 code, .panel-warning .panel-body h3 tt, .panel-warning .panel-body h3 code, .panel-warning .panel-body h4 tt, .panel-warning .panel-body h4 code, .panel-warning .panel-body h5 tt, .panel-warning .panel-body h5 code, .panel-warning .panel-body h6 tt, .panel-warning .panel-body h6 code {
+  font-size: inherit;
+}
+
+.panel-warning .panel-body h1 {
+  font-size: 2.5em;
+  border-bottom: 1px solid #dddddd;
+}
+
+.panel-warning .panel-body h2 {
+  font-size: 2em;
+  border-bottom: 1px solid #eeeeee;
+}
+
+.panel-warning .panel-body h3 {
+  font-size: 1.5em;
+}
+
+.panel-warning .panel-body h4 {
+  font-size: 1.2em;
+}
+
+.panel-warning .panel-body h5 {
+  font-size: 1em;
+}
+
+.panel-warning .panel-body h6 {
+  color: #777;
+  font-size: 1em;
+}
+
+.panel-warning .panel-body p, .panel-warning .panel-body blockquote, .panel-warning .panel-body ul, .panel-warning .panel-body ol, .panel-warning .panel-body dl, .panel-warning .panel-body table, .panel-warning .panel-body pre {
+  margin: 15px 0;
+}
+
 @media screen and (max-width: 767px) {
   body {
     padding: 100px 0 0;
