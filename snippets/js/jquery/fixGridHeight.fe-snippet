@@ -1,0 +1,45 @@
+<snippet>
+
+<name>Fix Responsive Grid Height</name>
+
+<description><![CDATA[Small function that will maintain the equal height between responsive grid elements.]]></description>
+
+<content type="code" language="javascript"><![CDATA[/**
+ * Author: Mihai Ionut Vilcu
+ * Apr 2014
+ */
+  function fixGridHeight(elementsArr) {
+
+    for(var i = 0; i < elementsArr.length; i++) {
+      var maxH = 0,
+          $elements = elementsArr[i];
+
+      $elements.each(function(index, el) {
+        // set the height to auto and grab the outer height
+        var h = $(el).height('auto').outerHeight();
+        if(h > maxH)
+          maxH = h;
+      });
+      $elements.height(maxH);
+    }
+
+  }]]></content>
+
+<content type="tip"><![CDATA[How to use:
+```javascript
+  // make sure it's on document ready
+  $(function() {
+    var fixHeightElements = [];
+
+    fixHeightElements.push($(".services-list li"));
+    fixHeightElements.push($(".boxes-list li .box .box-body"));
+
+    fixGridHeight(fixHeightElements);
+
+    $(window).on('resize orientationchange', function() {
+      fixGridHeight(fixHeightElements);
+    });
+  });
+```]]></content>
+
+</snippet>
