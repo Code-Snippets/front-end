@@ -1,0 +1,29 @@
+<snippet>
+
+<name>OL, UL reset</name>
+
+<description><![CDATA[This will reset the ul, ol, elements inside of a container in case a css reset was applied on the site.]]></description>
+
+<content type="code" language="css"><![CDATA[.content ul, .content ol {
+  display: block;
+  list-style-type: disc;
+  margin: 1em 0;
+  padding-left: 40px;
+}
+.content ol {
+  list-style-type: decimal;
+}
+.content li {
+  display: list-item;
+}
+.content ul ul, .content ol ul {
+  list-style-type: circle;
+}
+.content ul ul, .content ul ol, .content ol ul, .content ol ol {
+  margin: 0;
+}
+.content ol ol ul, .content ol ul ul, .content ul ol ul, .content ul ul ul {
+  list-style-type: square;
+}]]></content>
+
+</snippet>
