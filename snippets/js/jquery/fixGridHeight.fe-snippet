@@ -8,19 +8,30 @@
  * Author: Mihai Ionut Vilcu
  * Apr 2014
  */
-  function fixGridHeight(elementsArr) {
+    function fixGridHeight(elementsArr) {
 
-    for(var i = 0; i < elementsArr.length; i++) {
-      var maxH = 0,
-          $elements = elementsArr[i];
+        for(var i = 0; i < elementsArr.length; i++) {
+          var callback;
+          if(Object.prototype.toString.call(elementsArr[i]) == '[object Array]') {
+            callback = elementsArr[i][1];
+            elementsArr[i] = elementsArr[i][0];
+          }
 
-      $elements.each(function(index, el) {
-        // set the height to auto and grab the outer height
-        var h = $(el).height('auto').outerHeight();
-        if(h > maxH)
-          maxH = h;
-      });
-      $elements.height(maxH);
+          var maxH = 0,
+              $elements = elementsArr[i];
+
+          $elements.each(function(index, el) {
+            // set the height to auto and grab the outer height
+            var h = $(el).height('auto').outerHeight();
+            if(h > maxH)
+              maxH = h;
+          });
+          $elements.height(maxH);
+
+          if(typeof callback == 'function')
+            callback($elements, maxH);
+        }
+
     }
 
   }]]></content>
@@ -32,7 +43,9 @@
     var fixHeightElements = [];
 
     fixHeightElements.push($(".services-list li"));
-    fixHeightElements.push($(".boxes-list li .box .box-body"));
+    fixHeightElements.push($(".boxes-list li .box .box-body"), function($el, maxH){
+      console.log($el, maxH);
+    });
 
     fixGridHeight(fixHeightElements);
 
