@@ -1,0 +1,9 @@
+<snippet>
+
+<name>Detect flash</name>
+
+<description><![CDATA[It will detect if flash is enabled in the browser]]></description>
+
+<content type="code" language="javascript"><![CDATA[var _flash_installed = ((typeof navigator.plugins != "undefined" && typeof navigator.plugins["Shockwave Flash"] == "object") || (window.ActiveXObject && (new ActiveXObject("ShockwaveFlash.ShockwaveFlash")) != false));]]></content>
+
+</snippet>
