@@ -36,7 +36,7 @@ function fixGridHeight(elementsArr) {
         }
       });
     $elements.css('height', maxH + 'px');
-    console.log($elements, maxH);
+    
     if(typeof callback_after == 'function') {
       callback_after($elements, maxH);
     }
