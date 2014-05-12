@@ -1,0 +1,17 @@
+<snippet>
+
+<name>Get css styles</name>
+
+<description><![CDATA[Get the css styles for an element that are not depended on the style attribute.]]></description>
+
+<content type="code" language="javascript"><![CDATA[function getClassStyles(parentElem, selector, style){
+    var elemstr = '<div '+ selector +'></div>';
+    var $elem = $(elemstr).hide().appendTo(parentElem),
+        val = $elem.css(style);
+    $elem.remove();
+    return val;
+}
+
+// how to use: var mt = getClassStyles('.container:first', 'class="title"', 'margin-top')]]></content>
+
+</snippet>
