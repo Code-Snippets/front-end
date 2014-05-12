@@ -24,8 +24,8 @@ function fixGridHeight(elementsArr) {
 
     var maxH = 0;
 
-    if(typeof callback_after == 'function') {
-      callback_after($elements);
+    if(typeof callback_before == 'function') {
+      callback_before($elements);
     }
 
     $elements.each(function(index, el) {
