@@ -1,0 +1,48 @@
+<snippet>
+
+<name>Mini placeholder</name>
+
+<description><![CDATA[A simple script that will emulate the placeholder. It removes it on focus and adds it back on blur.]]></description>
+
+<content type="code" language="javascript"><![CDATA[// ie8+
+(function() {
+  'use strict';
+  var elem = document.querySelectorAll("[placeholder]");
+  for(var i = 0; i < elem.length; i++) {
+    var placeholder = elem[i].getAttribute('placeholder');
+    
+    if(placeholder) {
+      elem[i].setAttribute("data-placeholder", placeholder);
+      elem[i].removeAttribute('placeholder');
+      elem[i].value = placeholder;
+      addEvent(elem[i], 'focus', onFocus);
+      addEvent(elem[i], 'blur', onBlur);      
+    }
+  }
+  
+  function addEvent(el, eventName, callback) {
+    if(typeof document.addEventListener != 'undefined') {
+      el.addEventListener(eventName, callback);
+      return;
+    }
+    el.attachEvent('on' + eventName, callback);
+  }
+  function onFocus(e) {
+    e = e || window.event;
+    var target = e.target || e.srcElement;
+    var pl = target.getAttribute("data-placeholder");
+    if(target.value === pl) {
+      target.value = '';
+    }
+  }
+  function onBlur(e) {
+    e = e || window.event;
+    var target = e.target || e.srcElement;
+    var pl = target.getAttribute("data-placeholder");
+    if(target.value === '') {
+      target.value = pl;
+    }    
+  }
+})();]]></content>
+
+</snippet>
