@@ -53,13 +53,19 @@
                 </div>
             </div>
             <div class="panel-body">
+                <div class="cursors-container" ng-if="panel.cursors.length">
+                    <input
+                        type="text"
+                        ng-repeat="n in helpers.range(panel.cursors.length)"
+                        ng-model="panel.cursors[$index]">
+                </div>
 
                 <pre
                     id="code-{{$index}}"
                     nag-prism
                     ng-if="!panel.isTip"
                     class="line-numbers language-{{panel.language}}"
-                    source="panel.code"></pre>
+                    source="parseCursors(panel.code, $index)"></pre>
                 <div
                     class="tip-info"
                     ng-if="panel.isTip"

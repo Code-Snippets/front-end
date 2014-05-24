@@ -4,12 +4,31 @@
 CodeSnippets.controller('SnippetDetailsCtrl',
         ['$scope', '$routeParams', '$http', 'shareService',
     function($scope, $routeParams, $http, shareService) {
-
         $scope.helpers = shareService;
         $scope.helpers.currentPage = 'SnippetDetails'
 
         $scope.helpers.listenForSelection();
 
+        $scope.parseCursors = function(code, panelIndex) {
+
+            if( ! $scope.panels[panelIndex].hasCursors) {
+                return code;
+            }
+            var parse = function (match, curIndex, curVal) {
+
+                if(typeof $scope.panels[panelIndex].cursors[curIndex] == 'undefined') {
+                    $scope.panels[panelIndex].cursors[curIndex] = curVal ? curVal.substr(1) : 'bazinga';
+                }
+
+                return $scope.panels[panelIndex].cursors[curIndex];
+            }
+
+            // match ${1:defaultValue} or ${1}
+            var reg = /\${([0-9]+)(:[^\}]+)?}/ig;
+            code = code.replace(reg, parse);
+
+            return code;
+        };
         // grab and interpret the snippet
         $http.get('snippets/' + $routeParams.id)
              .success(function(data) {
@@ -27,6 +46,8 @@ CodeSnippets.controller('SnippetDetailsCtrl',
                     $scope.panels[index] = {};
 
                     $scope.panels[index].language = content.attr('language') || 'markup';
+                    $scope.panels[index].hasCursors = content.attr('has-cursors') || '0';
+                    $scope.panels[index].cursors = [];
                     $scope.panels[index].code = content.text();
 
 
@@ -56,10 +77,7 @@ CodeSnippets.controller('SnippetDetailsCtrl',
                     }
 
 
-
                 }); // each content
-
-
 
 
              }) // success

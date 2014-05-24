@@ -7,15 +7,15 @@
       @attr language: the language for the highlight,
             supported: markup(html,xml, this is the default value), css, scss, clike, javascript, java, php, bash, c, cpp, python, sql, groovy, http
   -->
-  <content language="css"><![CDATA[.cf:after,
-.cf:before {
+  <content language="css" has-cursors='true'><![CDATA[${0:.cf}:after,
+${0:.cf}:before {
     content: '';
     display: table;
 }
-.cf:after {
+${0:.cf}:after {
     clear: both;
 }
-.cf {
+${0:.cf} {
     *zoom: 1;
 }
 ]]></content>
