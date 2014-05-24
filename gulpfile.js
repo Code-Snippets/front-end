@@ -7,7 +7,7 @@
 // dependencies
 var gulp = require('gulp');
 var fs = require( 'fs' );
-var libxmljs = require("libxmljs");
+var parseString = require('xml2js').parseString;
 
 // Load plugins
 var $ = require('gulp-load-plugins')();
@@ -59,15 +59,17 @@ gulp.task('logSnippets', function() {
     // read the content of the file and parse the xml
     var xml = fs.readFileSync(__dirname + "/" + val, { encoding: 'utf8'});
 
-    var xmlDoc = libxmljs.parseXmlString(xml);
-    var description = xmlDoc.get("//description").text();
-    var name = xmlDoc.get("//name").text();
+    parseString(xml, function (err, result) {
+      if(err) {
+        return;
+      }
+      // push the object to the main array
+      snippets.push({
+        id: val,
+        name: result.snippet.name[0],
+        description: result.snippet.description[0]
+      });
 
-    // push the object to the main array
-    snippets.push({
-      id: val,
-      name: name,
-      description: description
     });
 
 
