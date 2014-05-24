@@ -46,7 +46,7 @@ CodeSnippets.controller('SnippetDetailsCtrl',
                     $scope.panels[index] = {};
 
                     $scope.panels[index].language = content.attr('language') || 'markup';
-                    $scope.panels[index].hasCursors = content.attr('has-cursors') || '0';
+                    $scope.panels[index].hasCursors = content.attr('has-cursors') || false;
                     $scope.panels[index].cursors = [];
                     $scope.panels[index].code = content.text();
 

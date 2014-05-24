@@ -49,6 +49,9 @@ CodeSnippets.controller('MakeSnippetCtrl', ['$scope', 'shareService',
             if(val.type != 'tip') {
                 $scope.snippetCode += ' language="'+ (val.language || 'markup') +'"';
             }
+            if(val.hasCursors) {
+                $scope.snippetCode += ' has-cursors="true"';
+            }
 
             $scope.snippetCode += "><![CDATA[" + (val.code || '') + "]]></content>\n";
 

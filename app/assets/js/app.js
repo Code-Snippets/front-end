@@ -2060,6 +2060,9 @@ CodeSnippets.controller('MakeSnippetCtrl', ['$scope', 'shareService',
             if(val.type != 'tip') {
                 $scope.snippetCode += ' language="'+ (val.language || 'markup') +'"';
             }
+            if(val.hasCursors) {
+                $scope.snippetCode += ' has-cursors="true"';
+            }
 
             $scope.snippetCode += "><![CDATA[" + (val.code || '') + "]]></content>\n";
 
@@ -2119,7 +2122,7 @@ CodeSnippets.controller('SnippetDetailsCtrl',
                     $scope.panels[index] = {};
 
                     $scope.panels[index].language = content.attr('language') || 'markup';
-                    $scope.panels[index].hasCursors = content.attr('has-cursors') || '0';
+                    $scope.panels[index].hasCursors = content.attr('has-cursors') || false;
                     $scope.panels[index].cursors = [];
                     $scope.panels[index].code = content.text();
 
