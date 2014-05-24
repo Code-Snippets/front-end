@@ -10,6 +10,23 @@
 <p>In order to make a snippet you need to go to Tools > Make a snippet, fill the form, copy the code a the end of the page, make a new file in the snippets folder and make a pull request.<br/>
 If you store a local copy of this app you will need to run gulp build to add the new snippets in the snippets.json file.</p>
 
+<h4>Form options</h4>
+<ul>
+    <li><strong>Name</strong> - The name of your snippet <em>(used for fuzzy search)</em></li>
+    <li><strong>Description</strong> - The description of your snippet <em>(used for fuzzy search)</em></li>
+    <li>
+        <strong>Panels</strong> - A panel is the box where the code will be displayed on the snippet page
+        <ul>
+            <li><strong>Code Panel</strong> - Its input will be highlighted</li>
+            <li><strong>ProTip Panel</strong> - Its input will be compiled as markdown.</li>
+        </ul>
+    </li>
+    <li><strong>Language</strong> - Specifies the language to be highlighted for the code panel.</li>
+    <li><strong>Url</strong>(optional) - If present this url will be used to replace the content of the panel with the one fetched from the url. If the url fails the content specified in the panel will be used as a fallback.</li>
+    <li><strong>Code</strong> - The content of the panel.</li>
+    <li><strong>Has cursors</strong>(optional) - If this is true it will parse the code for cursors. They will allow to have a dynamic snippet based on the user input.</li>
+</ul>
+<p>You can add as many panels as you want.</p>
 <h3>Keyboard shortcuts</h3>
 <p>
     The available shortcuts are:
