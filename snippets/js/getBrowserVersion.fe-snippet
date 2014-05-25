@@ -1,0 +1,54 @@
+<snippet>
+
+<name>getBrowserVersion</name>
+
+<description><![CDATA[Returns the current version of the browser based on the user agent string for IE, Chrome, Opera, Safari and Firefox]]></description>
+
+<content type="code" language="javascript"><![CDATA[// our beloved IE
+// returns the ie version, null for other browsers
+function getIeVersion() {
+  var msie = parseInt((/msie (\d+)/.exec(navigator.userAgent.toLowerCase()) || [])[1], 10);
+  if (isNaN(msie)) {
+    msie = parseInt((/trident\/.*; rv:(\d+)/.exec(navigator.userAgent.toLowerCase()) || [])[1], 10);
+  }
+  return msie || null;
+}
+
+
+// chrome, null for others
+function getChromeVersion() {
+    // exclude new Opera
+    if(navigator.userAgent.indexOf(' OPR/') > -1) {
+        return null;
+    }
+    return parseInt((window.navigator.appVersion.match(/Chrome\/(\d+)\./) || [])[1], 10) || null;
+}
+
+// opera, null for others
+function getOperaVersion() {
+    if(!!window.opera) { // old opera
+        return opera.version();
+    }
+    return parseInt((window.navigator.appVersion.match(/OPR\/(\d+)\./) || [])[1], 10) || null;
+}
+
+// safari, null for others
+function getSafariVersion() {
+    return (navigator.userAgent.match(/Version\/(\d+).*Safari/) || [])[1] || null;
+}
+
+// firefox, null for others
+function getFirefoxVersion() {
+    return (navigator.userAgent.match(/Firefox\/(\d+)\./) || [])[1] || null;
+}
+
+// check for a certain browser
+var isOpera = !!window.opera || navigator.userAgent.indexOf(' OPR/') >= 0;
+    // Opera 8.0+ (UA detection to detect Blink/v8-powered Opera)
+var isFirefox = typeof InstallTrigger !== 'undefined';   // Firefox 1.0+
+var isSafari = Object.prototype.toString.call(window.HTMLElement).indexOf('Constructor') > 0;
+    // At least Safari 3+: "[object HTMLElementConstructor]"
+var isChrome = !!window.chrome && !isOpera;              // Chrome 1+
+var isIE = /*@cc_on!@*/false || !!document.documentMode; // At least IE6]]></content>
+
+</snippet>
