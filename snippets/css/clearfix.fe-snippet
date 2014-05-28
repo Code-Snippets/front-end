@@ -15,9 +15,7 @@ ${0:.cf}:before {
 ${0:.cf}:after {
     clear: both;
 }
-${0:.cf} {
-    *zoom: 1;
-}
+
 ]]></content>
   <content type="tip">If you don't need the overflow use `overflow: hidden; clear: both;` for clearing the floats you may want to keep the `:before` and `:after` pseudo-elements for something else.</content>
 
