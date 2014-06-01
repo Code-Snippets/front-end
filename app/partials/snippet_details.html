@@ -20,7 +20,7 @@
                         <!-- copy button -->
                         <button
                             type="button"
-                            clip-copy="panel.code"
+                            clip-copy="parseCursors(panel.code, $index)"
                             clip-click="helpers.showLog('Data added to the clipboard !');"
                             class="btn btn-sm btn-default">Copy</button>
                         <!-- copy selected button -->
@@ -39,11 +39,11 @@
                         <ul class="dropdown-menu" role="options">
                             <li>
                                 <a href="#"
-                                clip-copy="lsCode = helpers.getMinText(panel.code, panel.language)"
+                                clip-copy="lsCode = helpers.getMinText(parseCursors(panel.code, $index), panel.language)"
                                 clip-click="lsCode ? helpers.showLog('Minified data added to the clipboard !') : ''">Copy minified</a>
                             </li>
                             <li>
-                                <a ng-click="helpers.openInSublime(panel.code)">Open in sublime</a>
+                                <a ng-click="helpers.openInSublime(parseCursors(panel.code, $index))">Open in sublime</a>
                             </li>
                             <li>
                                 <a href="#" ng-click="helpers.isTextSelected = true;" select-text="#code-{{$index}}">Select All</a>
@@ -69,7 +69,7 @@
                 <div
                     class="tip-info"
                     ng-if="panel.isTip"
-                    marked="panel.code"></div>
+                    marked="parseCursors(panel.code, $index)"></div>
             </div>
 
         </div><!-- /panel -->

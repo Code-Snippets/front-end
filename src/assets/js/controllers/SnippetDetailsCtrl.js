@@ -52,7 +52,7 @@ CodeSnippets.controller('SnippetDetailsCtrl',
 
 
                     // check if it's a tip
-                    if(content.attr('type') == 'tip') {
+                    if(content.attr('type') == 'tip' || val.tagName.toLowerCase() == 'tip') {
                         $scope.panels[index].isTip = true;
                         $scope.panels[index].language = "ProTip";
                     }
