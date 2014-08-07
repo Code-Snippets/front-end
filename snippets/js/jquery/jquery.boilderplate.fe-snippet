@@ -5,6 +5,7 @@
 <description><![CDATA[jQuery plugin boilerplate]]></description>
 
 <content type="code" language="javascript"><![CDATA[;(function ( $, window, undefined ) {
+  'use strict';
 
   var pluginName = 'plugin',
       document = window.document,
