@@ -16,7 +16,7 @@
     var t = this;
     t.element = element;
 
-    t.$el = $(t);
+    t.$el = $(t.element);
     t.$body = $('body');
 
     t.opt = $.extend( {}, defaults, options) ;
