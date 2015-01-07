@@ -30,7 +30,7 @@ function fixGridHeight(elementsArr) {
 
     $elements.each(function(index, el) {
         // set the height to auto and grab the outer height
-        var h = $(el).height('auto').outerHeight();
+        var h = $(el).height('auto').height();
         if(h > maxH) {
           maxH = h;
         }
